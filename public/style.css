@@ -7,8 +7,8 @@ body {
 }
 
 #main {
-    display: flex;
-    justify-content: space-around;
+    /* display: flex; */
+    /* justify-content: space-around; */
 }
 
 .card {
@@ -19,6 +19,17 @@ body {
     height: 300px;
     border: 2px solid green;
     border-radius: 10px;
+}
+
+.input {
+    display: flex;
+    padding: 10px;
+    justify-content: space-around;
+}
+
+.images {
+    display: flex;
+    justify-content: space-around;
 }
 
 img {

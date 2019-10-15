@@ -8,19 +8,28 @@
 
 <body>
     <h1>IMAGES BOARD</h1>
-    <!-- <input v-model="username" name="username">
-    <input v-model="title" name="title">
-    <input v-model="desc" name="description">
-    <input type="file" accept="image/*" @change="fileSelected">
-    <button @click>upload</button> -->
+
 
 
     <div id="main">
-        <div class="card" v-for="image in images">
-            <img :src="image.url">
-            <p>{{image.title}}</p>
-
+        <div class="input">
+            <input v-model="username" name="username" placeholder="username">
+            <input v-model="title" name="title" placeholder="title">
+            <input v-model="desc" name="description" placeholder="description">
+            <input type="file" accept="image/*" @change="fileSelected">
+            <button @click='upload'>upload</button>
         </div>
+
+        <div class="images">
+            <div class="card" v-for="image in images">
+                <img :src="image.url">
+                <p>{{image.title}}</p>
+
+            </div>
+        </div>
+
+
+
     </div>
     <script src="/js/vue.js"></script>
     <script src="/js/axios.min.js"></script>
