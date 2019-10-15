@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <div id="main">
+        <h3 :class="className">{{title}}</h3>
+        2 + 2 ={{2 + 2}}
+        <ul>
+            <li v-for='chicken in famousChickens'>
+                {{chicken.name}}
+                <strong v-if="chicken.name =='chicken little'">!!!</strong>
+            </li>
+        </ul>
+        <h3>{{chicken}}</h3>
+        <input name='chicken' placeholder='enter chicken' v-model="chicken">
+        <button @click="handleClick">button</button>
+    </div>
+    <script src="/js/vue.js"></script>
+    <script src="/js/axios.min.js"></script>
+    <script src="/js/script.js"></script>
+</body>
+
+</html>
