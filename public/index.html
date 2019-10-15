@@ -16,7 +16,8 @@
             <input v-model="username" name="username" placeholder="username">
             <input v-model="title" name="title" placeholder="title">
             <input v-model="desc" name="description" placeholder="description">
-            <input type="file" accept="image/*" @change="fileSelected">
+            <input id="inputfile" type="file" accept="image/*" @change="fileSelected">
+            <!-- <label for="file">Choose a file</label> -->
             <button @click='upload'>upload</button>
         </div>
 

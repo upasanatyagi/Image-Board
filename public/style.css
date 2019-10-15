@@ -3,7 +3,18 @@
 }
 
 body {
-    background-color: #E9967A;
+    background-color: #DCDCDC;
+}
+
+h1 {
+    font: 600 1.5em/1 'Raleway', sans-serif;
+    font-weight: bolder;
+    font-size: 35px;
+    color: rgba(0, 0, 0, .5);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .5em;
+    width: 100%;
 }
 
 #main {
@@ -15,10 +26,12 @@ body {
     display: grid;
     justify-items: center;
     align-items: center;
+    background-color: white;
     width: 250px;
     height: 300px;
     border: 2px solid green;
     border-radius: 10px;
+    box-shadow: 10px 10px 5px grey;
 }
 
 .input {
@@ -27,15 +40,32 @@ body {
     justify-content: space-around;
 }
 
+/* #inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+#inputfile:focus+label,
+#inputfile+label:hover {
+    background-color: #B0E0E6;
+} */
 .images {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    /* justify-content: space-around; */
+    grid-template-rows: 400px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fill);
 }
 
 img {
-    width: 200px;
+    width: 220px;
     height: 200px;
     object-fit: cover;
+    border: 2px solid grey;
 }
 
 h1 {
