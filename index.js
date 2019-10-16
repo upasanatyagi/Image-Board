@@ -34,6 +34,17 @@ app.get("/images", (req, res) => {
     });
 });
 
+app.get("/images/:id", (req, res) => {
+    console.log("req.params.id", req.params.id);
+    db.getImageInfo(req.params.id)
+        .then(function({ rows }) {
+            console.log("rowsmodal", rows[0]);
+            res.json(rows[0]);
+        })
+        .catch(function(e) {
+            console.log(e);
+        });
+});
 app.post("/upload", uploader.single("image"), s3.upload, function(req, res) {
     //image coming from file data
     const { username, title, desc } = req.body;

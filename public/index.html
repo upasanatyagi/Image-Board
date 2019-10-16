@@ -2,36 +2,48 @@
 <html>
 
 <head>
-    <title></title>
+    <title>My Image Board</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
-    <h1>IMAGES BOARD</h1>
 
 
 
     <div id="main">
+        <header>
+            <h1>IMAGES BOARD</h1>
+        </header>
+        <image-component @close="closeMe" :selected-image="selectedImage" post-title="hello" v-if="selectedImage">
+        </image-component>
+
         <div class="input">
-            <input v-model="username" name="username" placeholder="username">
-            <input v-model="title" name="title" placeholder="title">
-            <input v-model="desc" name="description" placeholder="description">
+            <input v-model="username" type="text" name="username" placeholder="username">
+            <input v-model="title" type="text" name="title" placeholder="title">
+            <input v-model="desc" type="text" name="description" placeholder="description">
             <input id="inputfile" type="file" accept="image/*" @change="fileSelected">
-            <!-- <label for="file">Choose a file</label> -->
+            <label for="file">Choose a file</label>
             <button @click='upload'>upload</button>
         </div>
 
         <div class="images">
-            <div class="card" v-for="image in images">
+            <div @click="selectedImage = image.id" class="card" v-for="image in images">
                 <img :src="image.url">
                 <p>{{image.title}}</p>
-
             </div>
         </div>
-
-
-
     </div>
+
+    <script type="text/x-template" id="template">
+        <div class="component">
+               <h1 @click="closeModal">This is my first template {{image.username}}</h1>
+               <img :src="image.url">
+               <h2> {{image.title}}</h2>
+               <h3>{{image.description}}</h3>
+
+               <!-- <button @click="count++">Click me!</button> Count {{count}} -->
+       </div>
+    </script>
     <script src="/js/vue.js"></script>
     <script src="/js/axios.min.js"></script>
     <script src="/js/script.js"></script>
