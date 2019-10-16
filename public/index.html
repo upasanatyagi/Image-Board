@@ -36,13 +36,19 @@
 
     <script type="text/x-template" id="template">
         <div class="component">
-               <h1 @click="closeModal">This is my first template {{image.username}}</h1>
+               <h1 @click="closeModal">My Image template {{selectedImage}}</h1>
                <img :src="image.url">
                <h2> {{image.title}}</h2>
-               <h3>{{image.description}}</h3>
-
+               <h2> {{image.description}}</h2>
+               <h3> Uploaded By:{{image.username}}</h3>
+               <h2>Add Comments here:</h2>
+          <div class="input">
+              <p>Comment </p><input v-model="comment" name="comment" placeholder="comment">
+              <p>Username </p><input v-model="user" name="user" placeholder="username">
+              <button @click="submit">submit</button>
+          </div>
                <!-- <button @click="count++">Click me!</button> Count {{count}} -->
-       </div>
+        </div>
     </script>
     <script src="/js/vue.js"></script>
     <script src="/js/axios.min.js"></script>

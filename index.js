@@ -26,6 +26,7 @@ const uploader = multer({
         fileSize: 2097152
     }
 });
+app.use(express.json());
 
 app.get("/images", (req, res) => {
     db.getImages().then(result => {
@@ -62,6 +63,17 @@ app.post("/upload", uploader.single("image"), s3.upload, function(req, res) {
         .catch(function(err) {
             console.log(err);
             res.sendStatus(500);
+        });
+});
+app.post("/comment", function(req, res) {
+    const { user_comment, comment, imageId } = req.body;
+    db.postComment(user_comment, comment, imageId)
+        .then(function({ rows }) {
+            res.json({ rows });
+            console.log("----rows", rows);
+        })
+        .catch(function(e) {
+            console.log(e);
         });
 });
 //     if (req.file) {

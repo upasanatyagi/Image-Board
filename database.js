@@ -17,3 +17,10 @@ module.exports.addImage = (url, username, title, description) => {
 module.exports.getImageInfo = id => {
     return db.query(`SELECT * FROM images WHERE id=$1`, [id]);
 };
+
+module.exports.postComment = (user_comment, comment, imageId) => {
+    return db.query(
+        `INSERT INTO comments(user_comment,comment,imageId) VALUES($1,$2,$3)`,
+        [user_comment, comment, imageId]
+    );
+};

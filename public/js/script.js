@@ -34,7 +34,17 @@
         methods: {
             closeModal: function() {
                 console.log("emitthing from the component...");
-                // this.$emit("close", this.count);
+                this.$emit("close");
+            },
+            submit: function() {
+                let commentinfo = {
+                    imageId: this.selectedImage,
+                    user_comment: this.user_comment,
+                    comment: this.comment
+                };
+                axios.post("/comment", commentinfo).then(function(resp) {
+                    console.log();
+                });
             }
         }
     });
