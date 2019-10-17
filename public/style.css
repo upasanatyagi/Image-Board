@@ -4,22 +4,35 @@
 
 body {
     background-color: #DCDCDC;
+    display: grid;
+    min-height: 100vh;
+}
+
+header {
+    background-color: ;
+}
+
+footer {
+    text-align: center;
+    background-color: darkgrey;
 }
 
 h1 {
     font: 600 1.5em/1 'Raleway', sans-serif;
     font-weight: bolder;
     font-size: 35px;
-    color: rgba(0, 0, 0, .5);
     text-align: center;
+    color: rgba(0, 0, 0, .5);
     text-transform: uppercase;
     letter-spacing: .5em;
     width: 100%;
 }
 
 #main {
-    /* display: flex; */
+    display: grid;
     /* justify-content: space-around; */
+    /* grid-auto-flow: column; */
+    flex-direction: column;
 }
 
 .card {
@@ -34,22 +47,46 @@ h1 {
     box-shadow: 10px 10px 5px grey;
 }
 
+p {
+    font-size: 18px;
+    font-style: normal;
+}
+
 .component {
-    background-color: blue;
+    background-color: pink;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 2;
+    display: grid;
+    grid-auto-flow: column;
 }
 
-.input {
-    display: flex;
-    padding: 10px;
-    justify-content: center;
-    background: yellow;
+.inputUpload {
     margin-bottom: 10px;
     height: 70px;
+    display: flex;
+    background: yellow;
+    justify-content: center;
+    padding: 10px;
+    border: 2px solid grey;
+}
+
+.imagesContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    justify-content: space-around;
+    margin: 10px 10px 10px 10px;
+    margin: 10px;
+    grid-column-gap: 50px;
+    grid-row-gap: 50px;
+    background-color: repeating-linear-gradient(45deg,
+            #606dbc,
+            #606dbc 10px,
+            #465298 10px,
+            #465298 20px);
 }
 
 #inputfile {
@@ -73,14 +110,6 @@ input[type=text] {
 #inputfile+label:hover {
     background-color: #B0E0E6;
 } */
-.images {
-    display: grid;
-    /* justify-content: space-around; */
-    grid-template-rows: 400px;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-columns: repeat(auto-fill);
-}
-
 img {
     width: 250px;
     height: 270px;
@@ -90,4 +119,23 @@ img {
 
 h1 {
     text-align: center;
+}
+
+.commentcontainer {
+    background-color: green;
+    /* display: flex; */
+    flex-direction: column;
+    font-size: 10px;
+    overflow-y: scroll;
+    height: 400px;
+}
+
+.commentBox {
+    position: relative;
+    width: 500px;
+    height: 100px;
+    font-style: italic;
+    background-color: grey;
+    text-align: center;
+    border-radius: 15px;
 }

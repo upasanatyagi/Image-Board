@@ -24,3 +24,11 @@ module.exports.postComment = (user_comment, comment, imageId) => {
         [user_comment, comment, imageId]
     );
 };
+
+module.exports.allcomments = imageId => {
+    return db.query(
+        `SELECT * FROM comments WHERE imageId=$1
+        `,
+        [imageId]
+    );
+};

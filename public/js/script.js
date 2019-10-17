@@ -10,7 +10,10 @@
                 description: "",
                 url: "",
                 title: "",
-                created_at: ""
+                comments: [],
+                created_at: "",
+                user_comment: "",
+                comment: ""
             };
         },
         props: ["postTitle", "selectedImage"],
@@ -22,7 +25,7 @@
                 .get(`/images/${this.selectedImage}`)
                 .then(
                     function(resp) {
-                        console.log("resp", resp.data);
+                        // console.log("resp", resp.data);
                         this.image = resp.data;
                         // console.log("this.images:", res);
                     }.bind(this)
@@ -30,20 +33,39 @@
                 .catch(function(e) {
                     console.log(e);
                 });
+            axios
+                .get(`/comment?id=${this.selectedImage}`)
+                .then(
+                    function(result) {
+                        this.comments = result.data.rows;
+                        console.log("this.comments", this.comments);
+                    }.bind(this)
+                )
+                .catch(function(e) {
+                    console.log("comments error", e);
+                });
         },
+        // watch:{
+        //     id:function(){
+        //         console.log("i ma the watcher and id just changed");
+        //repeating the above code/get
+        //     }
+        // },
         methods: {
             closeModal: function() {
-                console.log("emitthing from the component...");
+                // console.log("emitthing from the component...");
                 this.$emit("close");
             },
             submit: function() {
+                var myVue = this;
                 let commentinfo = {
                     imageId: this.selectedImage,
                     user_comment: this.user_comment,
                     comment: this.comment
                 };
-                axios.post("/comment", commentinfo).then(function(resp) {
-                    console.log();
+                axios.post("/comment", commentinfo).then(function({ data }) {
+                    console.log("resp:", data);
+                    myVue.comments.unshift(data[0]);
                 });
             }
         }
@@ -59,6 +81,7 @@
             title: "",
             file: null,
             selectedImage: null
+            // imageId:location.hash.slice(1);
         },
         mounted: function() {
             var myVue = this;
@@ -101,6 +124,7 @@
                 this.file = e.target.files[0];
             },
             closeMe: function() {
+                this.selectedImage = null;
                 // console.log("closeMe is running...");
                 // console.log("count is:", count);
             }
@@ -110,3 +134,11 @@
         }
     });
 })();
+
+// addEventListener('hashchange',function(){
+//     self.imageId = location.hash.slice(1);
+//     console.log('hash change event fired');
+// });
+//use the code in close mobel
+//this.imageId = null;
+//history.replaceState(null,null,'');

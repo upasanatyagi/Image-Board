@@ -68,13 +68,20 @@ app.post("/upload", uploader.single("image"), s3.upload, function(req, res) {
 app.post("/comment", function(req, res) {
     const { user_comment, comment, imageId } = req.body;
     db.postComment(user_comment, comment, imageId)
-        .then(function({ rows }) {
-            res.json({ rows });
+        .then(function(rows) {
             console.log("----rows", rows);
+            res.json({ rows });
         })
         .catch(function(e) {
             console.log(e);
         });
+});
+app.get("/comment", function(req, res) {
+    let { id } = req.query;
+    db.allcomments(id).then(rows => {
+        res.json(rows);
+        console.log("rows", rows);
+    });
 });
 //     if (req.file) {
 //         const { username, desc, title } = req.body;
