@@ -122,6 +122,23 @@
                         this.error = true;
                     });
             },
+            addMore: function() {
+                // console.log(" i am in add more");
+                var myVue = this;
+                let lowest_id = this.images[this.images.length - 1].id;
+                console.log("lowest_id==>", lowest_id);
+                axios
+                    .get(`/moreimages?id=${lowest_id}`)
+                    .then(function(result) {
+                        console.log("client side results", result.data);
+                        for (let i = 0; i < result.data.length; i++) {
+                            myVue.images.push(result.data[i]);
+                        }
+                    })
+                    .catch(function(e) {
+                        console.log("error in getMoreImages", e);
+                    });
+            },
             fileSelected: function(e) {
                 console.log(e.target.files);
                 this.file = e.target.files[0];

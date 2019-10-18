@@ -84,6 +84,14 @@ app.get("/comment", function(req, res) {
         console.log("rows", rows);
     });
 });
+app.get("/moreimages", function(req, res) {
+    let { id } = req.query;
+    console.log("moreimges id==>", id);
+    db.getMoreImages(id).then(result => {
+        console.log("result", result.rows);
+        res.json(result.rows);
+    });
+});
 //     if (req.file) {
 //         const { username, desc, title } = req.body;
 //         res.sendStatus(200);

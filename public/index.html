@@ -19,10 +19,10 @@
 
         <div class="inputUpload">
             <input id="input1" v-model="username" type="text" name="username" placeholder="username">
-            <input v-model="title" type="text" name="title" placeholder="title">
-            <input v-model="desc" type="text" name="description" placeholder="description">
+            <input id="input2" v-model="title" type="text" name="title" placeholder="title">
+            <input id="input3" v-model="desc" type="text" name="description" placeholder="description">
             <input id="inputfile" type="file" accept="image/*" @change="fileSelected">
-            <label for="file">Choose a file</label>
+            <!-- <label for="file">Choose a file</label> -->
             <button @click='upload'>upload</button>
         </div>
 
@@ -31,6 +31,9 @@
                 <img :src="image.url">
                 <p>{{image.title}}</p>
             </div>
+        </div>
+        <div class="button">
+            <button @click="addMore">More</button>
         </div>
     </div>
 

@@ -4,7 +4,8 @@ const db = spicedPg(`postgres:postgres:postgres@localhost:5432/imageboard`);
 module.exports.getImages = () => {
     return db.query(
         `SELECT * FROM images
-        ORDER BY id DESC;`
+        ORDER BY id DESC
+        LIMIT 10;`
     );
 };
 module.exports.addImage = (url, username, title, description) => {
@@ -31,5 +32,18 @@ module.exports.allcomments = imageId => {
         `SELECT * FROM comments WHERE imageId=$1
         `,
         [imageId]
+    );
+};
+module.exports.getMoreImages = lowest_id => {
+    return db.query(
+        `SELECT *, (
+        SELECT id FROM images
+        ORDER BY id ASC
+        LIMIT 1
+    ) AS lowest_id FROM images
+    WHERE id < $1
+    ORDER BY id DESC
+    LIMIT 10`,
+        [lowest_id]
     );
 };
