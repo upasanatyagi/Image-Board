@@ -37,6 +37,7 @@
                 .get(`/comment?id=${this.selectedImage}`)
                 .then(
                     function(result) {
+                        console.log("result", result);
                         this.comments = result.data.rows;
                         console.log("this.comments", this.comments);
                     }.bind(this)
@@ -63,9 +64,11 @@
                     user_comment: this.user_comment,
                     comment: this.comment
                 };
+                console.log("commentinfo", commentinfo.user_comment);
                 axios.post("/comment", commentinfo).then(function({ data }) {
-                    console.log("resp:", data);
-                    myVue.comments.unshift(data[0]);
+                    console.log("data", data);
+                    console.log("resp:", data.rows);
+                    myVue.comments.unshift(data.rows[0]);
                 });
             }
         }

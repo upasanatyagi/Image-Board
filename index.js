@@ -67,10 +67,11 @@ app.post("/upload", uploader.single("image"), s3.upload, function(req, res) {
 });
 app.post("/comment", function(req, res) {
     const { user_comment, comment, imageId } = req.body;
+    console.log("imageId", imageId);
     db.postComment(user_comment, comment, imageId)
         .then(function(rows) {
             console.log("----rows", rows);
-            res.json({ rows });
+            res.json(rows);
         })
         .catch(function(e) {
             console.log(e);

@@ -20,7 +20,8 @@ module.exports.getImageInfo = id => {
 
 module.exports.postComment = (user_comment, comment, imageId) => {
     return db.query(
-        `INSERT INTO comments(user_comment,comment,imageId) VALUES($1,$2,$3)`,
+        `INSERT INTO comments(user_comment,comment,imageId) VALUES($1,$2,$3)
+        RETURNING *`,
         [user_comment, comment, imageId]
     );
 };
