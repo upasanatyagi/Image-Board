@@ -36,7 +36,8 @@
             </div>
         </div>
         <div class="button">
-            <button @click="addMore">More</button>
+            <button v-if="images.length > 0 && showBtn" @click="addMore">More</button>
+            <!-- <button @click="addMore">More</button> -->
         </div>
     </div>
 
@@ -44,18 +45,18 @@
         <!-- <div>     -->
         <div class="component">
             <div class="header_container">
-                <h1>My Image template {{selectedImage}}</h1>
+                <h1>My Image template </h1>
             </div>
             <div class="main_container">
                 <div class="componentBox1">
                     <h2> {{image.title}}</h2>
-                    <img :src="image.url">
+                    <img id="tempImage" :src="image.url">
                 </div>
 
                 <div class="componentBox2">
                     <p class="close_icon" @click="closeModal"> X </p>
                     <h2> {{image.description}}</h2>
-                    <h3> Uploaded By:{{image.username}}</h3>
+                    <h3> Uploaded by:{{image.username}}</h3>
                     <h2>Add Comments here:</h2>
                     <div class="commentInput">
                         <p>Comment </p><input v-model="comment" name="comment" placeholder="comment">
@@ -65,8 +66,8 @@
 
                     <div class="commentcontainer">
                         <div class="commentBox " v-for="comment in comments">
-                            <p>Posted by:{{comment.user_comment}}</p>
                             <p>Comment:{{comment.comment}}</p>
+                            <p>Posted by:{{comment.user_comment}}</p>
                             <!-- <h1>{{coments.user_comment}}</h1> -->
                         </div>
                         <!-- <button @click="count++">Click me!</button> Count {{count}} -->

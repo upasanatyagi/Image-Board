@@ -19,6 +19,8 @@ footer {
 
 .button {
     position: center;
+    height: 50px;
+    width: 100px;
 }
 
 h1 {
@@ -34,8 +36,6 @@ h1 {
 
 #main {
     display: grid;
-    /* justify-content: space-around; */
-    /* grid-auto-flow: column; */
     flex-direction: column;
 }
 
@@ -66,24 +66,37 @@ p {
     z-index: 2;
     display: block;
     width: 100%;
-    height: 100% position: relative;
+    height: 100%;
+    /* position: relative; */
 }
 
 .main_container {
     display: flex;
     width: 100%;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .close_icon {
     position: absolute;
-    top: 40px;
-    right: 40px;
+    top: 70px;
+    right: 340px;
+    padding-bottom: 5px;
 }
 
-.componentBox1 {}
+.componentBox1 {
+    border: black;
+    /* background-color: grey; */
+    width: 600px;
+    height: 800px;
+}
 
-.componentBox2 {}
+.componentBox2 {
+    border: 2px solid black;
+    /* background-color: green; */
+    width: 600px;
+    height: 800px;
+    text-align: center;
+}
 
 .inputUpload {
     margin-bottom: 10px;
@@ -122,26 +135,14 @@ p {
             #465298 20px);
 }
 
-/* #inputfile {
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
-} */
 input[type=text] {
     height: 40px;
     color: white;
     border: 2px solid red;
     border-radius: 4px;
-    margin: 15px;
+    margin-right: 15px;
 }
 
-/* #inputfile:focus+label,
-#inputfile+label:hover {
-    background-color: #B0E0E6;
-} */
 img {
     width: 250px;
     height: 270px;
@@ -154,12 +155,19 @@ h1 {
 }
 
 .commentcontainer {
-    background-color: green;
+    background-color: #FFE4C4;
+    border: 4px solid grey;
     display: flex;
     flex-direction: column;
     font-size: 10px;
     overflow-y: scroll;
-    height: 400px;
+    height: 462px;
+    /* display: flex; */
+}
+
+#tempImage {
+    height: 730px;
+    width: 550px;
 }
 
 .commentInput {
@@ -167,11 +175,14 @@ h1 {
 }
 
 .commentBox {
-    position: relative;
-    width: 500px;
+    width: 300px;
     height: 100px;
     font-style: italic;
-    background-color: grey;
+    background-color: #DEB887;
     text-align: center;
+    border: 1px solid black;
     border-radius: 15px;
+    /* justify-content: center; */
+    margin-left: 145px;
+    margin-bottom: 2px;
 }

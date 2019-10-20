@@ -94,7 +94,8 @@
             title: "",
             file: null,
             // selectedImage: null
-            selectedImage: location.hash.slice(1)
+            selectedImage: location.hash.slice(1),
+            showBtn: true
         },
         mounted: function() {
             var myVue = this;
@@ -145,6 +146,12 @@
                     .then(function(result) {
                         console.log("client side results", result.data);
                         for (let i = 0; i < result.data.length; i++) {
+                            console.log("showBtn", myVue.showBtn);
+                            if (
+                                result.data[i].id === result.data[i].lowest_id
+                            ) {
+                                myVue.showBtn = false;
+                            }
                             myVue.images.push(result.data[i]);
                         }
                     })
