@@ -4,7 +4,6 @@
         data: function() {
             return {
                 name: "upasana",
-                // count: 0,
                 image: {},
                 username: "",
                 description: "",
@@ -46,12 +45,23 @@
                     console.log("comments error", e);
                 });
         },
-        // watch:{
-        //     id:function(){
-        //         console.log("i ma the watcher and id just changed");
-        //repeating the above code/get
-        //     }
-        // },
+        watch: {
+            selectedImage: function() {
+                // console.log("i ma the watcher and id just changed");
+                axios
+                    .get(`/images/${this.selectedImage}`)
+                    .then(
+                        function(resp) {
+                            // console.log("resp", resp.data);
+                            this.image = resp.data;
+                            // console.log("this.images:", res);
+                        }.bind(this)
+                    )
+                    .catch(function(e) {
+                        console.log(e);
+                    });
+            }
+        },
         methods: {
             closeModal: function() {
                 // console.log("emitthing from the component...");
@@ -83,8 +93,8 @@
             desc: "",
             title: "",
             file: null,
-            selectedImage: null
-            // imageId:location.hash.slice(1);
+            // selectedImage: null
+            selectedImage: location.hash.slice(1)
         },
         mounted: function() {
             var myVue = this;
@@ -96,6 +106,9 @@
                 .catch(function(e) {
                     console.log(e);
                 });
+            addEventListener("hashchange", function() {
+                myVue.selectedImage = location.hash.slice(1);
+            });
         },
 
         methods: {
@@ -144,7 +157,9 @@
                 this.file = e.target.files[0];
             },
             closeMe: function() {
-                this.selectedImage = null;
+                this.selectedImage = false;
+                location.hash = "";
+                history.replaceState(null, null, " ");
                 // console.log("closeMe is running...");
                 // console.log("count is:", count);
             }
@@ -154,11 +169,3 @@
         }
     });
 })();
-
-// addEventListener('hashchange',function(){
-//     self.imageId = location.hash.slice(1);
-//     console.log('hash change event fired');
-// });
-//use the code in close mobel
-//this.imageId = null;
-//history.replaceState(null,null,'');

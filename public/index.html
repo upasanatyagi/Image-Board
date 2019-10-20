@@ -27,9 +27,12 @@
         </div>
 
         <div class="imagesContainer">
-            <div @click="selectedImage = image.id" class="card" v-for="image in images">
-                <img :src="image.url">
-                <p>{{image.title}}</p>
+            <!-- <div @click="selectedImage = image.id" class="card" v-for="image in images"> -->
+            <div class="card" v-for="image in images">
+                <a :href="'#' + image.id">
+                    <img :src="image.url">
+                    <p>{{image.title}}</p>
+                </a>
             </div>
         </div>
         <div class="button">
@@ -40,30 +43,34 @@
     <script type="text/x-template" id="template">
         <!-- <div>     -->
         <div class="component">
-            <span>My Image template {{selectedImage}}</span>
-            <div class="componentBox1">
-                <h2> {{image.title}}</h2>
-                <img :src="image.url">
+            <div class="header_container">
+                <h1>My Image template {{selectedImage}}</h1>
             </div>
-
-            <div class="componentBox2">
-                <p @click="closeModal"> X </p>
-                <h2> {{image.description}}</h2>
-                <h3> Uploaded By:{{image.username}}</h3>
-                <h2>Add Comments here:</h2>
-                <div class="commentInput">
-                    <p>Comment </p><input v-model="comment" name="comment" placeholder="comment">
-                    <p>Username </p><input v-model="user_comment" name="user" placeholder="username">
-                    <button @click="submit">submit</button>
+            <div class="main_container">
+                <div class="componentBox1">
+                    <h2> {{image.title}}</h2>
+                    <img :src="image.url">
                 </div>
 
-                <div class="commentcontainer">
-                    <div class="commentBox " v-for="comment in comments">
-                        <p>Posted by:{{comment.user_comment}}</p>
-                        <p>Comment:{{comment.comment}}</p>
-                        <!-- <h1>{{coments.user_comment}}</h1> -->
+                <div class="componentBox2">
+                    <p class="close_icon" @click="closeModal"> X </p>
+                    <h2> {{image.description}}</h2>
+                    <h3> Uploaded By:{{image.username}}</h3>
+                    <h2>Add Comments here:</h2>
+                    <div class="commentInput">
+                        <p>Comment </p><input v-model="comment" name="comment" placeholder="comment">
+                        <p>Username </p><input v-model="user_comment" name="user" placeholder="username">
+                        <button @click="submit">submit</button>
                     </div>
-                    <!-- <button @click="count++">Click me!</button> Count {{count}} -->
+
+                    <div class="commentcontainer">
+                        <div class="commentBox " v-for="comment in comments">
+                            <p>Posted by:{{comment.user_comment}}</p>
+                            <p>Comment:{{comment.comment}}</p>
+                            <!-- <h1>{{coments.user_comment}}</h1> -->
+                        </div>
+                        <!-- <button @click="count++">Click me!</button> Count {{count}} -->
+                    </div>
                 </div>
             </div>
         </div>
