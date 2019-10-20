@@ -56,18 +56,18 @@
                 <div class="componentBox2">
                     <p class="close_icon" @click="closeModal"> X </p>
                     <h2> {{image.description}}</h2>
-                    <h3> Uploaded by:{{image.username}}</h3>
-                    <h2>Add Comments here:</h2>
+                    <p> Uploaded by:{{image.username}}</p>
+                    <h3>Add Comments here:</h3>
                     <div class="commentInput">
-                        <p>Comment </p><input v-model="comment" name="comment" placeholder="comment">
-                        <p>Username </p><input v-model="user_comment" name="user" placeholder="username">
-                        <button @click="submit">submit</button>
+                        <label>Comment </label><input id="comment" v-model="comment" name="comment">
+                        <label>Username </label><input id="username" v-model="user_comment" name="user">
+                        <button id="tempbutton" @click="submit">submit</button>
                     </div>
 
                     <div class="commentcontainer">
                         <div class="commentBox " v-for="comment in comments">
-                            <p>Comment:{{comment.comment}}</p>
-                            <p>Posted by:{{comment.user_comment}}</p>
+                            <p>{{comment.comment}}</p>
+                            <p>posted by:{{comment.user_comment}}</p>
                             <!-- <h1>{{coments.user_comment}}</h1> -->
                         </div>
                         <!-- <button @click="count++">Click me!</button> Count {{count}} -->

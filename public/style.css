@@ -92,7 +92,7 @@ p {
 
 .componentBox2 {
     border: 2px solid black;
-    /* background-color: green; */
+    background-color: #FAEBD7;
     width: 600px;
     height: 800px;
     text-align: center;
@@ -155,23 +155,49 @@ h1 {
 }
 
 .commentcontainer {
-    background-color: #FFE4C4;
-    border: 4px solid grey;
+    /* background-color: #FFE4C4; */
+    /* border: 4px solid grey; */
     display: flex;
     flex-direction: column;
     font-size: 10px;
     overflow-y: scroll;
-    height: 462px;
+    height: 400px;
     /* display: flex; */
+}
+
+#tempbutton {
+    background-color: #DC143C;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
 }
 
 #tempImage {
     height: 730px;
     width: 550px;
+    border: 4px solid grey;
 }
 
 .commentInput {
     margin-bottom: 40px;
+    background-color: #ADD8E6;
+}
+
+#comment {
+    height: 50px;
+    width: 200px;
+}
+
+#username {
+    height: 50px;
+    width: 100px;
 }
 
 .commentBox {
