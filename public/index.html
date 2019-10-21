@@ -18,12 +18,16 @@
         </image-component>
 
         <div class="inputUpload">
-            <input id="input1" v-model="username" type="text" name="username" placeholder="username">
-            <input id="input2" v-model="title" type="text" name="title" placeholder="title">
-            <input id="input3" v-model="desc" type="text" name="description" placeholder="description">
-            <input id="inputfile" type="file" accept="image/*" @change="fileSelected">
+            <!-- <input id="input1" v-model="username" type="text" name="username" placeholder="username"> -->
+            <label>Username</label><input v-model="username" name="username"></input>
+            <!-- <input id="input2" v-model="title" type="text" name="title" placeholder="title"> -->
+            <label>Title</label><input v-model="title" name="title"></input>
+            <!-- <input id="input3" v-model="desc" type="text" name="description" placeholder="description"> -->
+            <label>Description</label><input v-model="desc" name="description"></input>
+            <!-- <input id="inputfile" type="file" accept="image/*" @change="fileSelected"> -->
+            <label>File</label><input class="inputfile" type="file" accept="image/*" v-on:change="fileSelected"></input>
             <!-- <label for="file">Choose a file</label> -->
-            <button @click='upload'>upload</button>
+            <button id="uploadbtn" @click='upload'>upload</button>
         </div>
 
         <div class="imagesContainer">
